@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class NewPartTrigger : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class NewPartTrigger : MonoBehaviour
 
     // Layer mask to filter out which objects to check for collisions (you can leave it as default if no filtering needed)
     public LayerMask collisionLayer;
+
+     public event Action GenerateNewPart;
 
     void Update()
     {
@@ -34,10 +37,7 @@ public class NewPartTrigger : MonoBehaviour
                 // Log that the player was hit
                 Debug.Log("Player collided with: " + hit.collider.gameObject.name);
 
-                // You can add any further logic here, such as:
-                // - Apply damage
-                // - Play an animation
-                // - Trigger other effects
+                GenerateNewPart?.Invoke();
             }
         }
     }
@@ -48,4 +48,5 @@ public class NewPartTrigger : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position + (Vector3)boxCastDirection * castDistance, new Vector3(boxCastSize.x, boxCastSize.y, 1));
     }
+
 }

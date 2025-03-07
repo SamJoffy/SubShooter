@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/*
+This class is for the submarine of the game. Even though it is named Square
+*/
 public class Square : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,14 +25,17 @@ public class Square : MonoBehaviour
          UnityEngine.Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 
+
+        //Implements the rotation of the sub
+
         UnityEngine.Vector2 direction =  new UnityEngine.Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
 
         transform.up = direction; 
         
+
+
+        //Implements the movement of the Sub 
         UnityEngine.Vector3 target = new UnityEngine.Vector3(mousePos.x, transform.position.y, transform.position.z);
-
-       
-
         this.transform.position = UnityEngine.Vector3.Lerp(this.transform.position,target, 5f*Time.deltaTime); 
 
         if (Input.GetKeyDown(KeyCode.Space)) {

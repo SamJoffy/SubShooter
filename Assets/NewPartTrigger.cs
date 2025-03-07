@@ -15,12 +15,27 @@ public class NewPartTrigger : MonoBehaviour
     // Layer mask to filter out which objects to check for collisions (you can leave it as default if no filtering needed)
     public LayerMask collisionLayer;
 
-     public event Action GenerateNewPart;
+    public event Action GenerateNewPart;
+
+    private bool canHit = true;
+    private double timeSinceHit = 0.0;
+
+    void Start()
+    {
+        collisionLayer = UnityEngine.LayerMask.NameToLayer("Everything");
+    }
 
     void Update()
     {
-        // Perform the BoxCast every frame
-        BoxCastCheck();
+        if (canHit) {
+            BoxCastCheck();
+        }
+        else if (timeSinceHit > 2.0) {
+            canHit = true;
+        }
+        else {
+            timeSinceHit += Time.deltaTime;
+        }
     }
 
     void BoxCastCheck()
@@ -34,10 +49,10 @@ public class NewPartTrigger : MonoBehaviour
             // Check if the object hit has the "Player" tag
             if (hit.collider.CompareTag("Player"))
             {
-                // Log that the player was hit
-                Debug.Log("Player collided with: " + hit.collider.gameObject.name);
-
+                Debug.Log("Hit player");
                 GenerateNewPart?.Invoke();
+                canHit = false;
+                timeSinceHit = 0.0;
             }
         }
     }

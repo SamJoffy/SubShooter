@@ -8,6 +8,7 @@ public class Square : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
 
+
     //Gun Variables 
     [SerializeField] private GameObject bulletPrefab; 
     [SerializeField] private Transform firingPoint; 
@@ -16,7 +17,7 @@ public class Square : MonoBehaviour
     // [SerializeField] private float fireRate = 0.5f; 
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame

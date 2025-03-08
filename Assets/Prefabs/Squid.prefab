@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4466685370634149055}
   - component: {fileID: 8184879120155537866}
   - component: {fileID: 8547112908167449158}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Squid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -146,7 +146,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 72
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

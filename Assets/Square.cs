@@ -59,8 +59,26 @@ public class Square : MonoBehaviour
     }
 
     private void Shoot() {
-        Instantiate(bulletPrefab, firingPoint.position, firingPoint.rotation); 
+        if (Time.timeScale != 0) {
+            Instantiate(bulletPrefab, firingPoint.position, firingPoint.rotation); 
+        }
     }
 
+    public LayerMask enemyLayer;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the object that entered the trigger is a bullet
+        if (((1 << other.gameObject.layer) & enemyLayer) != 0)
+        {
+            // Optionally, destroy the bullet or deal damage
+            Destroy(other.gameObject);  // Destroys the bullet
+            EndGame();               // Call damage function if you want the enemy to take damage
+        }
+    }
+
+    private void EndGame() {
+        Time.timeScale = 0.0f;
+    }
 
 }

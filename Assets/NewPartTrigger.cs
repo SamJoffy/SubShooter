@@ -35,7 +35,6 @@ public class NewPartTrigger : MonoBehaviour
 
         if (hit.collider != null)
         {
-            Debug.Log("Hit player or valid object: " + hit.collider.name);
             canHit = false;
             timeSinceHit = 0f;  // Reset the cooldown timer
             GenerateNewPart?.Invoke();  // Trigger the event

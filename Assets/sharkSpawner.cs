@@ -1,14 +1,15 @@
+using System.Numerics;
 using UnityEngine;
 
 public class sharkSpawner : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    public GameObject sharkPrefab; 
+    
+    public GameObject treasurePrefab; 
 
     public GameObject player; 
 
-    public float spawnDistance = 3f; 
+    public float spawnDistance = 20f; 
     public float minSpawnInterval = 1f; 
     public float maxSpawnInterval = 3f;
 
@@ -20,62 +21,67 @@ public class sharkSpawner : MonoBehaviour
     public GameObject current;
 
     private float nextSpawnY; 
+    private float speed = 2;
 
     private float mapYPosition = 0f; //Current bottom of spawned content 
 
-    private float speed = 2;
+    private GameObject treasureContainer; 
 
 
+
+    
     void Start()
     {
         nextSpawnY = player.transform.position.y - spawnDistance; 
 
         mapYPosition = nextSpawnY; 
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        spawnDistance = spawnDistance + (speed * 0.5f); // Scale with speed
 
         while (player.transform.position.y - spawnDistance < nextSpawnY) {
-            SpawnSharks(); 
-
-            float speedAdjustedInterval = Mathf.Lerp(maxSpawnInterval, minSpawnInterval, speed / 15f);
-
-            nextSpawnY -= Random.Range(minSpawnInterval, speedAdjustedInterval);
-            
-            spawnDistance = 0; 
-            //spawnDistance = 0;
+            SpawnCoins(); 
+            nextSpawnY -= Random.Range(minSpawnInterval, maxSpawnInterval);
+            spawnDistance = 0;
         }
 
-        //spawnDistance += 1*speed;
+        spawnDistance += Time.deltaTime * speed;
+        
     }
 
-    void SpawnSharks() {
-        int sharkCount = Random.Range(1, 4); 
+    void SpawnCoins() {
+        Debug.Log("Spawn Coin"); 
+        int coinCount = Random.Range(1, 4); 
 
-        Debug.Log("Spawning Sharks"); 
-
-        for (int i = 0; i < sharkCount; i++) {
+        for (int i = 0; i < coinCount; i++) {
             float posX = Random.Range(minX, maxX); 
             
             UnityEngine.Vector3 spawnPos = new UnityEngine.Vector3(posX, mapYPosition - (i *0.5f), player.transform.position.z); 
 
-            GameObject shark = Instantiate(sharkPrefab, spawnPos, UnityEngine.Quaternion.identity); 
-            shark.GetComponent<shark>().player = player;
-            shark.transform.SetParent(current.transform, worldPositionStays: true); 
+            GameObject treasure = Instantiate(treasurePrefab, spawnPos, UnityEngine.Quaternion.identity); 
 
-            shark sharkScript = sharkPrefab.GetComponent<shark>(); 
+            treasure.transform.SetParent(current.transform, worldPositionStays: true); 
 
-            sharkScript.player = player; 
+            shark treasureScript = treasure.GetComponent<shark>();
+            if (treasureScript != null)
+            {
+                treasureScript.player = player;
+            }
+            else
+            {
+                Debug.LogWarning("shark component not found on spawned treasure!");
+            }
+
+
         }
 
         mapYPosition = nextSpawnY; 
     }
 
     public void increaseSpeed(float speed) {
-       
         minSpawnInterval += speed;
         maxSpawnInterval += speed;
         this.speed = speed;

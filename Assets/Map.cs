@@ -37,7 +37,7 @@ public class Map : MonoBehaviour
 
         TreasureSpawner.GetComponent<TreasureSpawner>().current = nextPart;
 
-        // SharkSpawner.GetComponent<sharkSpawner>().current = nextPart; 
+        SharkSpawner.GetComponent<sharkSpawner>().current = nextPart; 
 
     }
 
@@ -68,7 +68,7 @@ public class Map : MonoBehaviour
 
         TreasureSpawner.GetComponent<TreasureSpawner>().current = nextPart;
 
-        // SharkSpawner.GetComponent<sharkSpawner>().current = nextPart; 
+        SharkSpawner.GetComponent<sharkSpawner>().current = nextPart; 
 
     }
 

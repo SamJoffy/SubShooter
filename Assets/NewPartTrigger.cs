@@ -22,7 +22,7 @@ public class NewPartTrigger : MonoBehaviour
 
     void Start()
     {
-        collisionLayer = UnityEngine.LayerMask.NameToLayer("Everything");
+        collisionLayer = UnityEngine.LayerMask.NameToLayer("Player");
     }
 
     void Update()

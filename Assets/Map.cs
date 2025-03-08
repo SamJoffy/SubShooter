@@ -32,6 +32,8 @@ public class Map : MonoBehaviour
         previousPart = currentPart;
         currentPart = nextPart;
 
+
+        Debug.Log("Adding new part. Position: " + (currentPart.transform.position - new Vector3(0, 40 - 7.0F * Time.deltaTime * 2, 0)));
         // todo: change when know speed of map
         nextPart = Instantiate(mapPart, currentPart.transform.position - new Vector3(0, 40 - 7.0F * Time.deltaTime * 2, 0), Quaternion.identity);
         

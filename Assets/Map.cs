@@ -45,15 +45,15 @@ public class Map : MonoBehaviour
     {
         if (previousPart != null)
         {
-            previousPart.GetComponent<NewPartTrigger>().GenerateNewPart -= addNewPart;
+            previousPart.transform.GetChild(2).gameObject.GetComponent<NewPartTrigger>().GenerateNewPart -= addNewPart;
         }
         if (currentPart != null)
         {
-            currentPart.GetComponent<NewPartTrigger>().GenerateNewPart -= addNewPart;
+            currentPart.transform.GetChild(2).gameObject.GetComponent<NewPartTrigger>().GenerateNewPart -= addNewPart;
         }
         if (nextPart != null)
         {
-            nextPart.GetComponent<NewPartTrigger>().GenerateNewPart -= addNewPart;
+            nextPart.transform.GetChild(2).gameObject.GetComponent<NewPartTrigger>().GenerateNewPart -= addNewPart;
         }
     }
     

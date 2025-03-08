@@ -308,6 +308,10 @@ PrefabInstance:
       value: Submarine
       objectReference: {fileID: 0}
     - target: {fileID: 8110599480505157124, guid: 2bae5942546e19740ad74c7cce1d4ffe, type: 3}
+      propertyPath: restartScreen
+      value: 
+      objectReference: {fileID: 827772387}
+    - target: {fileID: 8110599480505157124, guid: 2bae5942546e19740ad74c7cce1d4ffe, type: 3}
       propertyPath: enemyLayer.m_Bits
       value: 128
       objectReference: {fileID: 0}
@@ -1030,7 +1034,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2043862633}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: RestartScreen, Assembly-CSharp
         m_MethodName: quitGame
         m_Mode: 1
         m_Arguments:
@@ -1356,7 +1360,7 @@ GameObject:
   - component: {fileID: 2043862632}
   - component: {fileID: 2043862633}
   m_Layer: 5
-  m_Name: MainMenu
+  m_Name: RestartScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1392,7 +1396,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2043862631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dfe13d1a9ccd93468c744cdd79926b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 09f16c2b54f2b414aa7a7cf5b141e5b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2066163353
@@ -1615,7 +1619,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2043862633}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: RestartScreen, Assembly-CSharp
         m_MethodName: playGame
         m_Mode: 1
         m_Arguments:

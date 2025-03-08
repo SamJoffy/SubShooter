@@ -74,8 +74,9 @@ public class Square : MonoBehaviour
         // Check if the object that entered the trigger is a bullet
         if (((1 << other.gameObject.layer) & enemyLayer) != 0)
         {
-            // Optionally, destroy the bullet or deal damage
-            Destroy(other.gameObject);  // Destroys the bullet
+            if (other.gameObject.tag == "Mine") {
+                other.gameObject.GetComponent<Mine>().Explode();
+            }
             EndGame();               // Call damage function if you want the enemy to take damage
         }
     }

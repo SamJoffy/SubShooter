@@ -7,6 +7,8 @@ public class ScoreManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    public static ScoreManager instance; 
+
 
     //The actual version of score
     public TextMeshProUGUI ScoreText; 
@@ -15,7 +17,12 @@ public class ScoreManager : MonoBehaviour
 
     //The integer version of the score 
     int score = 0; 
-    int highScore = 0; 
+    int highScore = 0;
+
+    private void Awake()
+    {
+        instance = this; 
+    } 
     void Start()
     {
         ScoreText.text = "Score: $" + score.ToString(); 
@@ -23,6 +30,8 @@ public class ScoreManager : MonoBehaviour
         highScoreText.text = "High Score: $" + highScore.ToString(); 
         
     }
+
+
 
 
     // Increases Score everytime a treasure token is collected

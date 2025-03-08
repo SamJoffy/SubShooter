@@ -19,7 +19,7 @@ public class shark : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         Vector2 direction = (player.transform.position - transform.position).normalized; 
+        Vector2 direction = (player.transform.position - transform.position).normalized; 
         
         movePlayer(direction); 
     }

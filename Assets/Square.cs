@@ -7,6 +7,7 @@ public class Square : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    private Rigidbody2D rb; 
 
 
     //Gun Variables 
@@ -17,7 +18,7 @@ public class Square : MonoBehaviour
     // [SerializeField] private float fireRate = 0.5f; 
     void Start()
     {
-       
+        rb = GetComponent<Rigidbody2D>(); 
     }
 
     // Update is called once per frame

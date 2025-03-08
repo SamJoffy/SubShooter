@@ -7,15 +7,21 @@ public class Squid : MonoBehaviour
     public GameObject player; 
 
     private float speed = 1.0f; 
+
+    private Rigidbody2D rb; 
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, transform.position.y + speed * Time.deltaTime * Vector3.Normalize(player.transform.position - transform.position).y, 0);
+        Vector2 direction = (player.transform.position - transform.position).normalized; 
+        
+        movePlayer(direction); 
+
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -23,5 +29,9 @@ public class Squid : MonoBehaviour
         if (collision.gameObject.tag == "Player") {
             Debug.Log("balls");
         }
+    }
+
+    void movePlayer(Vector2 direction) {
+        rb.linearVelocity = new Vector2(direction.x, direction.y) * speed; 
     }
 }

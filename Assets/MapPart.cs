@@ -16,6 +16,9 @@ public class MapPart : MonoBehaviour
         foreach(Transform child in SpawnRowOne.transform) {
             child.gameObject.GetComponent<SpawnEnemy>().spawn(Player);
         }
+        foreach(Transform child in TreasureSpawn.transform) {
+            child.gameObject.GetComponent<SpawnTreasure>().spawn(Player);
+        }
     }
 
     

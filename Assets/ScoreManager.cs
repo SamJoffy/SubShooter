@@ -21,7 +21,7 @@ public class ScoreManager : MonoBehaviour
 
     //The integer version of the score 
     int score = 0; 
-    int highScore = 0;
+    public int highScore = 0;
 
     float depth = 0; 
 
@@ -35,12 +35,13 @@ public class ScoreManager : MonoBehaviour
     } 
     void Start()
     {
+        highScore = HighScore.highScore;
+
         ScoreText.text = "Score: $" + score.ToString(); 
 
         highScoreText.text = "High Score: $" + highScore.ToString(); 
 
         Depth.text = "Depth: " + Mathf.RoundToInt(depth).ToString() + "m";
-        
     }
 
 
@@ -63,7 +64,7 @@ public class ScoreManager : MonoBehaviour
 
         Depth.text = "Depth: " + Mathf.RoundToInt(depth).ToString() + "m";
 
-        if (depth > lastDepthIncrease + 10 * mapSpeed && mapSpeed < 8) {
+        if (depth > lastDepthIncrease + 50 * mapSpeed && mapSpeed < 8) {
             lastDepthIncrease = depth;
             mapSpeed += 1;
             map.GetComponent<Map>().setSpeed(mapSpeed);

@@ -7,7 +7,7 @@ public class Map : MonoBehaviour
     public GameObject player;
     public GameObject TreasureSpawner;
 
-    public GameObject SharkSpawner; 
+    // public GameObject SharkSpawner; 
 
 
     private GameObject previousPart;
@@ -37,7 +37,7 @@ public class Map : MonoBehaviour
 
         TreasureSpawner.GetComponent<TreasureSpawner>().current = nextPart;
 
-        SharkSpawner.GetComponent<sharkSpawner>().current = nextPart; 
+        // SharkSpawner.GetComponent<sharkSpawner>().current = nextPart; 
 
     }
 
@@ -68,7 +68,7 @@ public class Map : MonoBehaviour
 
         TreasureSpawner.GetComponent<TreasureSpawner>().current = nextPart;
 
-        SharkSpawner.GetComponent<sharkSpawner>().current = nextPart; 
+        // SharkSpawner.GetComponent<sharkSpawner>().current = nextPart; 
 
     }
 
@@ -90,6 +90,7 @@ public class Map : MonoBehaviour
     
     public void setSpeed(float s) {
         speed = s;
+        player.GetComponent<Square>().mapSpeed = speed;
         previousPart.GetComponent<MapPart>().speed = speed;
         currentPart.GetComponent<MapPart>().speed = speed;
         nextPart.GetComponent<MapPart>().speed = speed;

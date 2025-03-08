@@ -12,9 +12,12 @@ public class Square : MonoBehaviour
     public float floatSpeed = 4.0f;
 
     public GameObject restartScreen;
+    public GameObject scoreStuff;
 
     private float immobilizedTime = 0;
     public float timeToBeImobilized = 2f;
+
+    public float mapSpeed = 2;
 
 
     //Gun Variables 
@@ -55,7 +58,7 @@ public class Square : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && immobilizedTime <= 0) {
             this.transform.position += UnityEngine.Vector3.down*10.0f*Time.deltaTime; 
         } else {
-            this.transform.position -= UnityEngine.Vector3.down*1.0f*Time.deltaTime; 
+            this.transform.position -= UnityEngine.Vector3.down*(mapSpeed-1)*Time.deltaTime; 
         }
 
         if (Input.GetMouseButtonDown(0)) {
@@ -91,12 +94,18 @@ public class Square : MonoBehaviour
                 Destroy(other.gameObject);
                 immobilizedTime = timeToBeImobilized;
             }
+            else if (other.gameObject.tag == "Shark") {
+                EndGame();
+            }
         }
     }
 
     private void EndGame() {
         Time.timeScale = 0.0f;
         restartScreen.SetActive(true);
+        if (scoreStuff.GetComponent<ScoreManager>().highScore > HighScore.highScore) {
+            HighScore.highScore = scoreStuff.GetComponent<ScoreManager>().highScore;
+        }
     }
 
 }

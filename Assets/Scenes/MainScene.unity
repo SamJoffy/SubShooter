@@ -308,6 +308,10 @@ PrefabInstance:
       value: Submarine
       objectReference: {fileID: 0}
     - target: {fileID: 8110599480505157124, guid: 2bae5942546e19740ad74c7cce1d4ffe, type: 3}
+      propertyPath: scoreStuff
+      value: 
+      objectReference: {fileID: 903764186}
+    - target: {fileID: 8110599480505157124, guid: 2bae5942546e19740ad74c7cce1d4ffe, type: 3}
       propertyPath: restartScreen
       value: 
       objectReference: {fileID: 566094228}
@@ -595,6 +599,7 @@ MonoBehaviour:
   highScoreText: {fileID: 1373611001}
   Depth: {fileID: 1068896293}
   map: {fileID: 2018932734}
+  highScore: 0
 --- !u!114 &903764188
 MonoBehaviour:
   m_ObjectHideFlags: 0

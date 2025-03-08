@@ -7,6 +7,7 @@ TagManager:
   - Bullet
   - Mine
   - Squid
+  - Shark
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,9 @@ public class Square : MonoBehaviour
 
     public GameObject restartScreen;
 
+    private float immobilizedTime = 0;
+    public float timeToBeImobilized = 2f;
+
 
     //Gun Variables 
     [SerializeField] private GameObject bulletPrefab; 
@@ -41,9 +44,15 @@ public class Square : MonoBehaviour
         transform.up = direction; 
 
         // Apply velocity towards the mouse
-        MovePlayer(direction);
+        if (immobilizedTime <= 0) {
+            MovePlayer(direction);
+        }
+        else {
+            immobilizedTime -= Time.deltaTime;
+            rb.linearVelocity = new Vector2(0,0);
+        }
 
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKey(KeyCode.Space) && immobilizedTime <= 0) {
             this.transform.position += UnityEngine.Vector3.down*10.0f*Time.deltaTime; 
         } else {
             this.transform.position -= UnityEngine.Vector3.down*1.0f*Time.deltaTime; 
@@ -76,8 +85,12 @@ public class Square : MonoBehaviour
         {
             if (other.gameObject.tag == "Mine") {
                 other.gameObject.GetComponent<Mine>().Explode();
+                EndGame();
             }
-            EndGame();               // Call damage function if you want the enemy to take damage
+            else if (other.gameObject.tag == "Squid") {
+                Destroy(other.gameObject);
+                immobilizedTime = timeToBeImobilized;
+            }
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -16,12 +17,17 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI highScoreText; 
 
     public TextMeshProUGUI Depth; 
+    public GameObject map;
 
     //The integer version of the score 
     int score = 0; 
     int highScore = 0;
 
     float depth = 0; 
+
+    float lastDepthIncrease = 0;
+
+    private float mapSpeed = 2;
 
     private void Awake()
     {
@@ -53,9 +59,16 @@ public class ScoreManager : MonoBehaviour
     }
 
     public void AddDepth() {
-        depth += 1 *Time.deltaTime; 
+        depth += mapSpeed *Time.deltaTime; 
 
         Depth.text = "Depth: " + Mathf.RoundToInt(depth).ToString() + "m";
+
+        if (depth > lastDepthIncrease + 10 * mapSpeed && mapSpeed < 8) {
+            lastDepthIncrease = depth;
+            mapSpeed += 1;
+            map.GetComponent<Map>().setSpeed(mapSpeed);
+            Debug.Log("Set speed to: " + mapSpeed);
+        }
     }
 
     

@@ -10,8 +10,8 @@ public class SpawnTreasure : MonoBehaviour
     }
 
     public void spawn(GameObject player) {
-        GameObject e = Instantiate(treasure, transform.position, Quaternion.identity);
-        e.transform.SetParent(transform);
-        e.GetComponent<TreasureInstance>().player = player;
+        // GameObject e = Instantiate(treasure, transform.position, Quaternion.identity);
+        // e.transform.SetParent(transform);
+        // e.GetComponent<TreasureInstance>().player = player;
     }
 }

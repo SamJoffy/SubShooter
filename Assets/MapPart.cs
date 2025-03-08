@@ -12,6 +12,7 @@ public class MapPart : MonoBehaviour
     public GameObject Player;
 
  
+    public float speed = 2.0f;
 
 
 
@@ -38,7 +39,7 @@ public class MapPart : MonoBehaviour
     
     void Update()
     {
-        transform.position += new Vector3(0, 2.0F * Time.deltaTime, 0);
+        transform.position += new Vector3(0, speed * Time.deltaTime, 0);
     }
 
     

@@ -594,6 +594,7 @@ MonoBehaviour:
   ScoreText: {fileID: 221144600}
   highScoreText: {fileID: 1373611001}
   Depth: {fileID: 1068896293}
+  map: {fileID: 2018932734}
 --- !u!114 &903764188
 MonoBehaviour:
   m_ObjectHideFlags: 0

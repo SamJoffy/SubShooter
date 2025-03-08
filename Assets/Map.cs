@@ -11,12 +11,18 @@ public class Map : MonoBehaviour
     private GameObject currentPart;
     private GameObject nextPart;
 
+    private float speed = 2;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         previousPart = Instantiate(mapPart, transform.position + new Vector3(0, 10, 0), Quaternion.identity);
         currentPart = Instantiate(mapPart, transform.position - new Vector3(0, 30, 0), Quaternion.identity);
         nextPart = Instantiate(mapPart, transform.position - new Vector3(0, 70, 0), Quaternion.identity);
+
+        previousPart.GetComponent<MapPart>().speed = speed;
+        currentPart.GetComponent<MapPart>().speed = speed;
+        nextPart.GetComponent<MapPart>().speed = speed;
 
         AddNewPartTrigger(previousPart.transform.GetChild(2).gameObject);
         AddNewPartTrigger(currentPart.transform.GetChild(2).gameObject);
@@ -38,6 +44,7 @@ public class Map : MonoBehaviour
 
     void AddNewPartTrigger(GameObject part)
     {
+
         NewPartTrigger trigger = part.GetComponent<NewPartTrigger>();
         trigger.GenerateNewPart += addNewPart; // Subscribe to the event
     }
@@ -52,6 +59,8 @@ public class Map : MonoBehaviour
         
         AddNewPartTrigger(nextPart.transform.GetChild(2).gameObject);
         nextPart.GetComponent<MapPart>().Player = player;
+        nextPart.GetComponent<MapPart>().speed = speed;
+
         TreasureSpawner.GetComponent<TreasureSpawner>().current = nextPart;
 
     }
@@ -72,5 +81,12 @@ public class Map : MonoBehaviour
         }
     }
     
+    public void setSpeed(float s) {
+        speed = s;
+        previousPart.GetComponent<MapPart>().speed = speed;
+        currentPart.GetComponent<MapPart>().speed = speed;
+        nextPart.GetComponent<MapPart>().speed = speed;
+        TreasureSpawner.GetComponent<TreasureSpawner>().increaseSpeed(speed);
+    }
 
 }

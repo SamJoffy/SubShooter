@@ -9,7 +9,7 @@ public class TreasureSpawner : MonoBehaviour
 
     public GameObject player; 
 
-    public float spawnDistance = 10f; 
+    public float spawnDistance = 20f; 
     public float minSpawnInterval = 1f; 
     public float maxSpawnInterval = 3f;
 
@@ -21,6 +21,7 @@ public class TreasureSpawner : MonoBehaviour
     public GameObject current;
 
     private float nextSpawnY; 
+    private float speed = 2;
 
     private float mapYPosition = 0f; //Current bottom of spawned content 
 
@@ -44,7 +45,10 @@ public class TreasureSpawner : MonoBehaviour
         while (player.transform.position.y - spawnDistance < nextSpawnY) {
             SpawnCoins(); 
             nextSpawnY -= Random.Range(minSpawnInterval, maxSpawnInterval);
+            spawnDistance = 0;
         }
+
+        spawnDistance += Time.deltaTime * speed;
         
     }
 
@@ -56,8 +60,6 @@ public class TreasureSpawner : MonoBehaviour
             float posX = Random.Range(minX, maxX); 
             
             UnityEngine.Vector3 spawnPos = new UnityEngine.Vector3(posX, mapYPosition - (i *0.5f), player.transform.position.z); 
-
-            Debug.Log(spawnPos.ToString()); 
 
             GameObject treasure = Instantiate(treasurePrefab, spawnPos, UnityEngine.Quaternion.identity); 
 
@@ -77,5 +79,11 @@ public class TreasureSpawner : MonoBehaviour
         }
 
         mapYPosition = nextSpawnY; 
+    }
+
+    public void increaseSpeed(float speed) {
+        minSpawnInterval += speed;
+        maxSpawnInterval += speed;
+        this.speed = speed;
     }
 }

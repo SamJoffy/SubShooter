@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0358de35f227f459cd43013e7e0d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 868129724219061180, guid: 1451c806c550f554d8a0d40a30e65eed, type: 3}
+  enemy: {fileID: 1413930477302906720, guid: 87c6fd143b554d5eb82531d66a8fbd2d, type: 3}
 --- !u!1 &1599506175116408188
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +281,7 @@ MonoBehaviour:
   SpawnRowTwo: {fileID: 5279420788376802728}
   SpawnRowThree: {fileID: 3924074720573859287}
   TreasureSpawn: {fileID: 3041654634627372011}
+  Player: {fileID: 0}
 --- !u!1 &2639782775087600643
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +614,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 63
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -634,7 +635,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 63
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -775,7 +776,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 63
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -796,7 +797,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 63
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1387,7 +1388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0358de35f227f459cd43013e7e0d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 868129724219061180, guid: 1451c806c550f554d8a0d40a30e65eed, type: 3}
+  enemy: {fileID: 1413930477302906720, guid: 87c6fd143b554d5eb82531d66a8fbd2d, type: 3}
 --- !u!1 &8001953451048350388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,7 +1509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0358de35f227f459cd43013e7e0d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 868129724219061180, guid: 1451c806c550f554d8a0d40a30e65eed, type: 3}
+  enemy: {fileID: 1413930477302906720, guid: 87c6fd143b554d5eb82531d66a8fbd2d, type: 3}
 --- !u!1 &8460242596946532975
 GameObject:
   m_ObjectHideFlags: 0

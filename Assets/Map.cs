@@ -4,6 +4,7 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     public GameObject mapPart;
+    public GameObject player;
 
     private GameObject previousPart;
     private GameObject currentPart;
@@ -19,6 +20,10 @@ public class Map : MonoBehaviour
         AddNewPartTrigger(previousPart.transform.GetChild(2).gameObject);
         AddNewPartTrigger(currentPart.transform.GetChild(2).gameObject);
         AddNewPartTrigger(nextPart.transform.GetChild(2).gameObject);
+        
+        previousPart.GetComponent<MapPart>().Player = player;
+        currentPart.GetComponent<MapPart>().Player = player;
+        nextPart.GetComponent<MapPart>().Player = player;
 
     }
 
@@ -33,12 +38,11 @@ public class Map : MonoBehaviour
         previousPart = currentPart;
         currentPart = nextPart;
 
-
-        Debug.Log("Adding new part. Position: " + (currentPart.transform.position - new Vector3(0, 40 - 7.0F * Time.deltaTime * 2, 0)));
         // todo: change when know speed of map
         nextPart = Instantiate(mapPart, currentPart.transform.position - new Vector3(0, 40 - 7.0F * Time.deltaTime * 2, 0), Quaternion.identity);
         
         AddNewPartTrigger(nextPart.transform.GetChild(2).gameObject);
+        nextPart.GetComponent<MapPart>().Player = player;
     }
 
     private void OnDestroy()

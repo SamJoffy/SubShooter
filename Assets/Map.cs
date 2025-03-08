@@ -94,6 +94,7 @@ public class Map : MonoBehaviour
         currentPart.GetComponent<MapPart>().speed = speed;
         nextPart.GetComponent<MapPart>().speed = speed;
         TreasureSpawner.GetComponent<TreasureSpawner>().increaseSpeed(speed);
+        SharkSpawner.GetComponent<sharkSpawner>().increaseSpeed(speed); 
     }
 
 }

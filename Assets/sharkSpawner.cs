@@ -8,7 +8,7 @@ public class sharkSpawner : MonoBehaviour
 
     public GameObject player; 
 
-    public float spawnDistance = 10f; 
+    public float spawnDistance = 3f; 
     public float minSpawnInterval = 1f; 
     public float maxSpawnInterval = 3f;
 
@@ -23,7 +23,7 @@ public class sharkSpawner : MonoBehaviour
 
     private float mapYPosition = 0f; //Current bottom of spawned content 
 
-    private GameObject treasureContainer; 
+    private float speed = 2;
 
 
     void Start()
@@ -36,15 +36,26 @@ public class sharkSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        spawnDistance = spawnDistance + (speed * 0.5f); // Scale with speed
+
         while (player.transform.position.y - spawnDistance < nextSpawnY) {
             SpawnSharks(); 
-            nextSpawnY -= Random.Range(minSpawnInterval, maxSpawnInterval);
+
+            float speedAdjustedInterval = Mathf.Lerp(maxSpawnInterval, minSpawnInterval, speed / 15f);
+
+            nextSpawnY -= Random.Range(minSpawnInterval, speedAdjustedInterval);
+            
+            spawnDistance = 0; 
+            //spawnDistance = 0;
         }
-        
+
+        //spawnDistance += 1*speed;
     }
 
     void SpawnSharks() {
         int sharkCount = Random.Range(1, 4); 
+
+        Debug.Log("Spawning Sharks"); 
 
         for (int i = 0; i < sharkCount; i++) {
             float posX = Random.Range(minX, maxX); 
@@ -61,5 +72,12 @@ public class sharkSpawner : MonoBehaviour
         }
 
         mapYPosition = nextSpawnY; 
+    }
+
+    public void increaseSpeed(float speed) {
+       
+        minSpawnInterval += speed;
+        maxSpawnInterval += speed;
+        this.speed = speed;
     }
 }

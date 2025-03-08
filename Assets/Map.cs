@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Map : MonoBehaviour
@@ -15,15 +16,15 @@ public class Map : MonoBehaviour
         currentPart = Instantiate(mapPart, transform.position - new Vector3(0, 30, 0), Quaternion.identity);
         nextPart = Instantiate(mapPart, transform.position - new Vector3(0, 70, 0), Quaternion.identity);
 
-        AddNewPartTrigger(previousPart);
-        AddNewPartTrigger(currentPart);
-        AddNewPartTrigger(nextPart);
+        AddNewPartTrigger(previousPart.transform.GetChild(2).gameObject);
+        AddNewPartTrigger(currentPart.transform.GetChild(2).gameObject);
+        AddNewPartTrigger(nextPart.transform.GetChild(2).gameObject);
 
     }
 
     void AddNewPartTrigger(GameObject part)
     {
-        NewPartTrigger trigger = part.AddComponent<NewPartTrigger>();
+        NewPartTrigger trigger = part.GetComponent<NewPartTrigger>();
         trigger.GenerateNewPart += addNewPart; // Subscribe to the event
     }
 
@@ -37,7 +38,7 @@ public class Map : MonoBehaviour
         // todo: change when know speed of map
         nextPart = Instantiate(mapPart, currentPart.transform.position - new Vector3(0, 40 - 7.0F * Time.deltaTime * 2, 0), Quaternion.identity);
         
-        AddNewPartTrigger(nextPart);
+        AddNewPartTrigger(nextPart.transform.GetChild(2).gameObject);
     }
 
     private void OnDestroy()

@@ -3,65 +3,48 @@ using System;
 
 public class NewPartTrigger : MonoBehaviour
 {
-    // Set the size of the BoxCast (this will be the width and height of the box)
-    public Vector2 boxCastSize = new Vector2(1f, 1f);
-    
-    // Set the direction of the BoxCast (usually forward or in a specific direction)
-    public Vector2 boxCastDirection = Vector2.right;
+    public Vector2 boxCastSize = new Vector2(1f, 1f);  // Size of the box
+    public Vector2 boxCastDirection = Vector2.up;      // Direction of the cast (upward in this case)
+    public float castDistance = 5f;                    // Cast distance (set this to an appropriate value)
+    public LayerMask collisionLayer;                   // Filter layer mask to detect only certain objects
 
-    // Distance to cast the box
-    public float castDistance = 1f;
+    public event Action GenerateNewPart;               // The event to notify when the action is triggered
 
-    // Layer mask to filter out which objects to check for collisions (you can leave it as default if no filtering needed)
-    public LayerMask collisionLayer;
-
-    public event Action GenerateNewPart;
-
-    private bool canHit = true;
-    private double timeSinceHit = 0.0;
-
-    void Start()
-    {
-        collisionLayer = UnityEngine.LayerMask.NameToLayer("Player");
-    }
+    private bool canHit = true;                        // Whether the BoxCast can hit or not
+    private float timeSinceHit = 0.0f;                 // Time since last hit for cooldown
 
     void Update()
     {
-        if (canHit) {
-            BoxCastCheck();
+        if (canHit)
+        {
+            castCheck();  // Perform the BoxCast
         }
-        else if (timeSinceHit > 2.0) {
+        else if (timeSinceHit > 2.0f) // After 2 seconds, reset the cooldown
+        {
             canHit = true;
         }
-        else {
-            timeSinceHit += Time.deltaTime;
+        else
+        {
+            timeSinceHit += Time.deltaTime; // Increment the time since last hit
         }
     }
 
-    void BoxCastCheck()
+    void castCheck()
     {
-        // Perform the BoxCast using Physics2D.BoxCast
         RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxCastSize, 0f, boxCastDirection, castDistance, collisionLayer);
 
-        // Check if the BoxCast hit something
         if (hit.collider != null)
         {
-            // Check if the object hit has the "Player" tag
-            if (hit.collider.CompareTag("Player"))
-            {
-                Debug.Log("Hit player");
-                GenerateNewPart?.Invoke();
-                canHit = false;
-                timeSinceHit = 0.0;
-            }
+            Debug.Log("Hit player or valid object: " + hit.collider.name);
+            canHit = false;
+            timeSinceHit = 0f;  // Reset the cooldown timer
+            GenerateNewPart?.Invoke();  // Trigger the event
         }
     }
 
-    // Optional: Visualize the BoxCast in the Scene view (for debugging purposes)
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position + (Vector3)boxCastDirection * castDistance, new Vector3(boxCastSize.x, boxCastSize.y, 1));
     }
-
 }

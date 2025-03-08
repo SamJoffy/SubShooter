@@ -11,6 +11,8 @@ public class Square : MonoBehaviour
     public float moveSpeed = 5.0f;
     public float floatSpeed = 4.0f;
 
+    public GameObject restartScreen;
+
 
     //Gun Variables 
     [SerializeField] private GameObject bulletPrefab; 
@@ -21,6 +23,7 @@ public class Square : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); 
+        restartScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -79,6 +82,7 @@ public class Square : MonoBehaviour
 
     private void EndGame() {
         Time.timeScale = 0.0f;
+        restartScreen.SetActive(true);
     }
 
 }

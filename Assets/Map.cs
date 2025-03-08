@@ -7,7 +7,7 @@ public class Map : MonoBehaviour
     public GameObject player;
     public GameObject TreasureSpawner;
 
-    // public GameObject SharkSpawner; 
+    public GameObject SharkSpawner; 
 
 
     private GameObject previousPart;

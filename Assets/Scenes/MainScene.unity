@@ -307,6 +307,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Submarine
       objectReference: {fileID: 0}
+    - target: {fileID: 8110599480505157124, guid: 2bae5942546e19740ad74c7cce1d4ffe, type: 3}
+      propertyPath: restartScreen
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8110599480505157124, guid: 2bae5942546e19740ad74c7cce1d4ffe, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

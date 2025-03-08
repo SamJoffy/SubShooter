@@ -9,7 +9,7 @@ public class Square : MonoBehaviour
 
     private Rigidbody2D rb; 
     public float moveSpeed = 5.0f;
-    public float floatSpeed = 2.0f;
+    public float floatSpeed = 4.0f;
 
 
     //Gun Variables 

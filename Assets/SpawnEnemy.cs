@@ -5,6 +5,7 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject enemy;
 
     public void spawn() {
-        Instantiate(enemy, transform.position, Quaternion.identity);
+        GameObject e = Instantiate(enemy, transform.position, Quaternion.identity);
+        e.transform.SetParent(transform);
     }
 }

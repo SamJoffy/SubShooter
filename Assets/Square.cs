@@ -38,11 +38,11 @@ public class Square : MonoBehaviour
         UnityEngine.Vector3 target = new UnityEngine.Vector3(mousePos.x, transform.position.y, transform.position.z);
         this.transform.position = UnityEngine.Vector3.Lerp(this.transform.position,target, 5f*Time.deltaTime); 
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetMouseButtonDown(0)) {
             Shoot(); 
         }
 
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetKey(KeyCode.Space)) {
             this.transform.position += UnityEngine.Vector3.down*10.0f*Time.deltaTime; 
         } else {
             this.transform.position -= UnityEngine.Vector3.down*1.0f*Time.deltaTime; 

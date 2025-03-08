@@ -296,6 +296,7 @@ MonoBehaviour:
   SpawnRowThree: {fileID: 3924074720573859287}
   TreasureSpawn: {fileID: 3041654634627372011}
   Player: {fileID: 0}
+  Background: {fileID: 7494313218556770017}
 --- !u!1 &2639782775087600643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,6 +1178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 62752432814321943}
   - component: {fileID: 3702307565075641774}
+  - component: {fileID: 618818667748496450}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -1254,6 +1256,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!64 &618818667748496450
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7494313218556770017}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &7567534791994469191
 GameObject:
   m_ObjectHideFlags: 0

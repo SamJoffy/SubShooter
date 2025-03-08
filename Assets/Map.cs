@@ -5,6 +5,7 @@ public class Map : MonoBehaviour
 {
     public GameObject mapPart;
     public GameObject player;
+    public GameObject TreasureSpawner;
 
     private GameObject previousPart;
     private GameObject currentPart;
@@ -25,6 +26,14 @@ public class Map : MonoBehaviour
         currentPart.GetComponent<MapPart>().Player = player;
         nextPart.GetComponent<MapPart>().Player = player;
 
+        TreasureSpawner.GetComponent<TreasureSpawner>().current = nextPart;
+
+    }
+
+    void Update()
+    {
+        //Update UI 
+        ScoreManager.instance.AddDepth(); 
     }
 
     void AddNewPartTrigger(GameObject part)
@@ -43,6 +52,8 @@ public class Map : MonoBehaviour
         
         AddNewPartTrigger(nextPart.transform.GetChild(2).gameObject);
         nextPart.GetComponent<MapPart>().Player = player;
+        TreasureSpawner.GetComponent<TreasureSpawner>().current = nextPart;
+
     }
 
     private void OnDestroy()

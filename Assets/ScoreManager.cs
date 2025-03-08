@@ -15,9 +15,13 @@ public class ScoreManager : MonoBehaviour
 
     public TextMeshProUGUI highScoreText; 
 
+    public TextMeshProUGUI Depth; 
+
     //The integer version of the score 
     int score = 0; 
     int highScore = 0;
+
+    float depth = 0; 
 
     private void Awake()
     {
@@ -28,6 +32,8 @@ public class ScoreManager : MonoBehaviour
         ScoreText.text = "Score: $" + score.ToString(); 
 
         highScoreText.text = "High Score: $" + highScore.ToString(); 
+
+        Depth.text = "Depth: " + Mathf.RoundToInt(depth).ToString() + "m";
         
     }
 
@@ -44,6 +50,12 @@ public class ScoreManager : MonoBehaviour
             highScoreText.text = "High Score: $" + highScore.ToString(); 
         }
 
+    }
+
+    public void AddDepth() {
+        depth += 1 *Time.deltaTime; 
+
+        Depth.text = "Depth: " + Mathf.RoundToInt(depth).ToString() + "m";
     }
 
     

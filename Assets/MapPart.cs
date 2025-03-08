@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MapPart : MonoBehaviour
@@ -10,14 +11,27 @@ public class MapPart : MonoBehaviour
 
     public GameObject Player;
 
+ 
+
+
+
 
     void Start()
     {
+
         foreach(Transform child in SpawnRowOne.transform) {
             child.gameObject.GetComponent<SpawnEnemy>().spawn(Player);
         }
         foreach(Transform child in TreasureSpawn.transform) {
+
+           
+            
+
+                    
             child.gameObject.GetComponent<SpawnTreasure>().spawn(Player);
+
+
+            
         }
     }
 

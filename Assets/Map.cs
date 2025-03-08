@@ -7,6 +7,9 @@ public class Map : MonoBehaviour
     public GameObject player;
     public GameObject TreasureSpawner;
 
+    public GameObject SharkSpawner; 
+
+
     private GameObject previousPart;
     private GameObject currentPart;
     private GameObject nextPart;
@@ -27,6 +30,8 @@ public class Map : MonoBehaviour
         nextPart.GetComponent<MapPart>().Player = player;
 
         TreasureSpawner.GetComponent<TreasureSpawner>().current = nextPart;
+
+        SharkSpawner.GetComponent<sharkSpawner>().current = nextPart; 
 
     }
 
@@ -53,6 +58,8 @@ public class Map : MonoBehaviour
         AddNewPartTrigger(nextPart.transform.GetChild(2).gameObject);
         nextPart.GetComponent<MapPart>().Player = player;
         TreasureSpawner.GetComponent<TreasureSpawner>().current = nextPart;
+
+        SharkSpawner.GetComponent<sharkSpawner>().current = nextPart; 
 
     }
 

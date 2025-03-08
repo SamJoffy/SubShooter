@@ -45,6 +45,10 @@ public class Square : MonoBehaviour
         } else {
             this.transform.position -= UnityEngine.Vector3.down*1.0f*Time.deltaTime; 
         }
+
+        if (Input.GetMouseButtonDown(0)) {
+             Shoot(); 
+         }
         
     }
 
